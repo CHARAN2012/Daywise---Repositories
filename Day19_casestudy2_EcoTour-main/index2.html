@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EcoTour – Explore Nature</title>
+  <meta name="description" content="EcoTour — sustainable, low-impact travel and curated nature trips.">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    /* --- Reset & Variables --- */
+    :root{--green:#2c6e49;--green-dark:#1b4d36;--max-w:1100px}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.5;color:#073018}
+
+    /* --- Utility container --- */
+    .container{max-width:var(--max-w);margin:0 auto;padding:0 1rem}
+
+    /* --- Skip link for accessibility --- */
+    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{position:static;width:auto;height:auto;padding:.5rem 1rem;background:#fff;border:2px solid var(--green);z-index:999}
+
+    /* --- Header & Nav --- */
+    header{background:var(--green);color:#fff;position:sticky;top:0;z-index:1000}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;max-width:var(--max-w);margin:0 auto}
+    .brand{display:flex;align-items:center;gap:.75rem}
+    .brand img{width:48px;height:48px;border-radius:6px;object-fit:cover}
+    nav ul{display:flex;gap:1rem;list-style:none}
+    nav a{color:#fff;text-decoration:none;font-weight:600;padding:.35rem .5rem;border-radius:4px}
+    nav a:focus, nav a:hover{background:rgba(255,255,255,.08)}
+
+    /* mobile menu toggle */
+    .menu-toggle{display:none;background:transparent;border:2px solid rgba(255,255,255,.15);color:#fff;padding:.35rem .6rem;border-radius:6px}
+    @media(max-width:700px){
+      .menu-toggle{display:inline-block}
+      nav{position:absolute;left:0;right:0;top:100%;background:var(--green);display:none}
+      nav.open{display:block}
+      nav ul{flex-direction:column;padding:1rem}
+    }
+
+    /* --- Hero --- */
+    .hero{background:url('hero.jpg') center/cover no-repeat;color:#fff;min-height:360px;display:grid;place-items:center;text-align:center;padding:3rem 1rem}
+    .hero .overlay{background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.45));padding:2rem;border-radius:12px}
+    .hero h1{font-size:clamp(1.5rem,3.5vw,2.4rem);margin-bottom:.5rem}
+    .hero p{max-width:40ch;margin:0 auto 1rem}
+
+    /* --- Sections --- */
+    main{padding:2rem 0}
+    section{padding:2rem 0;scroll-margin-top:80px}
+    .section-title{max-width:var(--max-w);margin:0 auto 1rem;padding:0 1rem}
+
+    /* About */
+    .about .container{display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap}
+    .about img{width:320px;max-width:100%;border-radius:8px;object-fit:cover}
+
+    /* Gallery */
+    .gallery .grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+    .gallery figure{margin:0;border-radius:8px;overflow:hidden;background:#f2f2f2}
+    .gallery img{width:100%;height:160px;object-fit:cover;display:block}
+
+    /* Contact */
+    .contact form{max-width:600px;margin:0 auto;display:grid;gap:.75rem}
+    input[type="text"],input[type="email"],input[type="tel"],textarea{padding:.75rem;border:1px solid #cfd8d3;border-radius:6px;font:inherit}
+    label.radio-group{display:inline-flex;gap:.5rem;align-items:center;padding:.25rem .5rem;border:1px solid #e6efe8;border-radius:6px;background:#fff}
+    button[type="submit"]{background:var(--green);color:#fff;border:none;padding:.75rem 1rem;border-radius:6px;cursor:pointer;font-weight:600}
+    button[type="submit"]:hover{background:var(--green-dark)}
+
+    /* Footer */
+    footer{background:var(--green);color:#fff;padding:1rem 0;text-align:center}
+    .social{display:flex;justify-content:center;gap:.5rem;margin:.5rem 0}
+    .social a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;background:rgba(255,255,255,.08);color:#fff;text-decoration:none}
+
+    /* Responsive tweaks */
+    @media(max-width:700px){
+      .hero{min-height:240px;padding:2rem}
+      .header-inner{padding:.5rem 1rem}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <img src="logo.png" alt="EcoTour logo">
+        <div>
+          <h1 style="font-size:1.125rem;margin:0">EcoTour</h1>
+          <small style="opacity:.9">Explore Nature</small>
+        </div>
+      </div>
+
+      <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false">Menu</button>
+
+      <nav id="primary-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="overlay container">
+        <h1 id="hero-heading">Discover the beauty of nature — responsibly</h1>
+        <p>Join EcoTour on curated eco-friendly trips that help preserve natural habitats and local cultures.</p>
+        <p><a href="#gallery" style="background:#fff;padding:.5rem .75rem;border-radius:6px;text-decoration:none;color:var(--green);font-weight:700">See Gallery</a></p>
+      </div>
+    </section>
+
+    <section id="about" class="about" aria-labelledby="about-heading">
+      <div class="section-title">
+        <h2 id="about-heading">About EcoTour</h2>
+      </div>
+      <div class="container">
+        <img src="about.jpg" alt="People hiking in nature">
+        <div>
+          <p>EcoTour is dedicated to sustainable travel. We offer low-impact itineraries, partner with local communities, and leave no trace.</p>
+          <p>Our trips include guided hikes, wildlife watching, and cultural exchanges — carefully planned to protect the places we visit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery" aria-labelledby="gallery-heading">
+      <div class="section-title">
+        <h2 id="gallery-heading">Travel Gallery</h2>
+      </div>
+      <div class="container">
+        <div class="grid">
+          <figure><img src="image1.jpg" alt="Mountain view" loading="lazy"><figcaption>Majestic mountains</figcaption></figure>
+          <figure><img src="image2.jpg" alt="River" loading="lazy"><figcaption>Serene river</figcaption></figure>
+          <figure><img src="image3.jpg" alt="Forest" loading="lazy"><figcaption>Lush forest</figcaption></figure>
+          <figure><img src="image4.jpg" alt="Beach" loading="lazy"><figcaption>Sandy beach</figcaption></figure>
+          <figure><img src="image5.jpg" alt="Wildlife" loading="lazy"><figcaption>Wildlife encounter</figcaption></figure>
+          <figure><img src="image6.jpg" alt="Sunset" loading="lazy"><figcaption>Golden sunset</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
+      <div class="section-title"><h2 id="contact-heading">Contact Us</h2></div>
+      <div class="container">
+        <form id="contact-form" novalidate>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required aria-required="true" placeholder="Your full name">
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required aria-required="true" placeholder="you@example.com">
+
+          <label for="phone">Phone (optional)</label>
+          <input id="phone" name="phone" type="tel" pattern="^\+?\d{7,15}$" placeholder="+91XXXXXXXXXX" aria-describedby="phone-help">
+          <small id="phone-help">Include country code, digits only.</small>
+
+          <p>Preferred contact method</p>
+          <div role="radiogroup" aria-labelledby="contact-heading">
+            <label class="radio-group"><input type="radio" name="contact-method" value="email" required> Email</label>
+            <label class="radio-group"><input type="radio" name="contact-method" value="phone"> Phone</label>
+          </div>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required placeholder="How can we help?"></textarea>
+
+          <button type="submit">Send Message</button>
+          <p id="form-status" aria-live="polite" style="margin-top:.5rem"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Follow us</p>
+      <div class="social" role="list">
+        <a href="#" aria-label="EcoTour on Facebook">FB</a>
+        <a href="#" aria-label="EcoTour on Twitter">TW</a>
+        <a href="#" aria-label="EcoTour on Instagram">IG</a>
+      </div>
+      <p style="opacity:.85">&copy; 2025 EcoTour. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    /* Mobile menu toggle */
+    const btn = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    btn?.addEventListener('click', ()=> {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+
+    /* Simple form validation + message (demo) */
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+      // demo success (replace with actual submit logic)
+      status.textContent = 'Thanks! Your message was sent (demo).';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
