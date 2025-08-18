@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PMS • Admin Products</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body { background: #f8fafc; }
+    .brand { font-weight: 700; letter-spacing: .3px; }
+    .card-elevated { border: none; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+    .product-card img { height: 180px; object-fit: cover; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand brand" href="admin_dashboard.html">PMS • Admin</a>
+      <div class="collapse navbar-collapse show">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="add_product.html">Add Product</a></li>
+          <li class="nav-item"><a class="nav-link active" href="product_list_admin.html">Product List</a></li>
+          <li class="nav-item"><a class="nav-link text-danger" href="#" id="logout">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3 class="mb-0">Product List</h3>
+      <a href="add_product.html" class="btn btn-primary">+ Add Product</a>
+    </div>
+    <div id="productList" class="row row-cols-1 row-cols-md-3 g-4">
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('logout').addEventListener('click', function() {
+      localStorage.removeItem('loggedInUser');
+      window.location.href = 'login.html';
+    });
+
+    function fetchProducts() {
+      fetch('http://localhost:3000/products')
+        .then(response => response.json())
+        .then(products => {
+          const productList = document.getElementById('productList');
+          productList.innerHTML = '';
+          products.forEach(product => {
+            const col = document.createElement('div');
+            col.className = 'col';
+            col.innerHTML = `
+              <div class="card product-card card-elevated h-100">
+                <img src="${product.image || 'https://via.placeholder.com/600x400?text=No+Image'}" class="card-img-top" alt="${product.name}">
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">${product.name}</h5>
+                  <p class="text-muted small flex-grow-1">${product.description}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="fw-semibold">$${Number(product.price).toFixed(2)}</span>
+                    <div>
+                      <button class="btn btn-sm btn-outline-primary me-2" onclick="editProduct(${product.id})">Edit</button>
+                      <button class="btn btn-sm btn-outline-danger" onclick="deleteProduct(${product.id})">Delete</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+            productList.appendChild(col);
+          });
+        });
+    }
+
+    function editProduct(id) {
+      localStorage.setItem('editProductId', id);
+      window.location.href = 'edit_product.html';
+    }
+
+    function deleteProduct(id) {
+      if(confirm('Delete this product?')) {
+        fetch(`http://localhost:3000/products/${id}`, { method: 'DELETE' })
+          .then(r => r.ok ? fetchProducts() : alert('Error deleting product'));
+      }
+    }
+
+    fetchProducts();
+  </script>
+</body>
+</html>

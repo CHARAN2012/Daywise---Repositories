@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin User",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Jane Doe",
+      "email": "jane@example.com",
+      "password": "user123",
+      "role": "user"
+    },
+    {
+      "id": "2d80",
+      "name": "YARRAMSETTY GURU VENKATA VISWATH",
+      "email": "forget@gmail.com",
+      "password": "12345678",
+      "role": "admin"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Smartphone X",
+      "description": "Latest model with advanced features and long-lasting battery.",
+      "price": 699,
+      "image": "images/products/smartphone-x.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Laptop Pro 14",
+      "description": "Powerful 14-inch laptop for creators and professionals.",
+      "price": 1499,
+      "image": "images/products/laptop-pro-14.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Wireless Earbuds Lite",
+      "description": "Compact earbuds with clear sound and 24h battery life.",
+      "price": 79,
+      "image": "images/products/earbuds-lite.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Smartwatch S",
+      "description": "Health tracking, notifications, and 5-day battery life.",
+      "price": 199,
+      "image": "images/products/smartwatch-s.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Bluetooth Speaker Go",
+      "description": "Portable speaker with rich bass and IPX7 waterproofing.",
+      "price": 59,
+      "image": "images/products/speaker-go.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Gaming Mouse G7",
+      "description": "Ergonomic design with 7 programmable buttons and RGB.",
+      "price": 49,
+      "image": "images/products/mouse-g7.jpg"
+    }
+  ],
+  "orders": []
+}
