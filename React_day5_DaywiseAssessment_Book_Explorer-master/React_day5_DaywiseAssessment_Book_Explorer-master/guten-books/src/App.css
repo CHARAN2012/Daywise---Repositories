@@ -1,0 +1,106 @@
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+:root {
+  --bg: #f6f7fb;
+  --text: #243043;
+  --muted: #6b788e;
+  --primary: #4a90e2;
+  --primary-600: #357abd;
+  --card: #ffffff;
+  --border: #e6e9ef;
+  --green-ink: #185a37;
+  --shadow: 0 6px 18px rgba(31, 50, 81, 0.08);
+}
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* ---------- Layout ---------- */
+.app-shell { min-height: 100%; display: flex; flex-direction: column; }
+.container { max-width: 1100px; margin: 24px auto; padding: 0 16px 40px; }
+
+/* ---------- Nav ---------- */
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px; background: var(--primary); color: #fff;
+  box-shadow: var(--shadow);
+}
+.brand { font-weight: 800; letter-spacing: .3px; }
+.sub { opacity: .9; font-size: .9rem; }
+
+/* ---------- Controls ---------- */
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 160px 200px 120px;
+  gap: 10px;
+  background: var(--card); padding: 14px; border-radius: 12px;
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+}
+.input, .select {
+  border: 1px solid var(--border);
+  border-radius: 8px; padding: 10px 12px; font-size: 0.95rem; width: 100%;
+}
+.input:focus, .select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(74,144,226,.15); }
+
+.btn {
+  background: var(--primary); color: white; font-weight: 700;
+  border: none; border-radius: 8px; padding: 10px 14px; cursor: pointer;
+  transition: background .15s ease;
+}
+.btn:hover { background: var(--primary-600); }
+.btn.secondary { background: #e9eef8; color: #163968; }
+.btn.secondary:hover { background: #dae6fb; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* ---------- Meta/Pager ---------- */
+.meta-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin: 16px 2px 8px;
+}
+.pager { display: flex; gap: 10px; }
+.pager.bottom { justify-content: center; margin-top: 16px; }
+
+/* ---------- Grid & Cards ---------- */
+.grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.card {
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 12px; overflow: hidden; box-shadow: var(--shadow);
+  display: flex; flex-direction: column; min-height: 100%;
+}
+.cover { width: 100%; height: 300px; object-fit: cover; background: #f2f2f2; }
+.cover.placeholder { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: .95rem; }
+
+.card-body { padding: 12px 12px 14px; display: grid; gap: 8px; }
+.title { font-size: 1rem; line-height: 1.3; margin: 0; }
+.authors { color: var(--muted); font-size: .92rem; margin: 0; }
+.meta { display: flex; justify-content: space-between; align-items: center; }
+.tag {
+  background: #eef7ff; color: #154a74;
+  padding: 4px 8px; border-radius: 999px; font-size: .78rem; font-weight: 700;
+}
+.dl { font-weight: 700; color: var(--green-ink); }
+
+/* ---------- States ---------- */
+.hint { margin: 16px 2px; color: var(--muted); }
+.error {
+  margin: 14px 0; padding: 12px; border-radius: 10px;
+  background: #fff5f5; border: 1px solid #ffd2d2; color: #a33a3a;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+  .meta-row { flex-direction: column; gap: 10px; align-items: stretch; }
+}
